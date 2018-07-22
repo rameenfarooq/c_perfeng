@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <sys/time.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <wchar.h>
+#include <wctype.h>
+
+
+
+int main(void)
+{
+    struct timeval stop, start;
+    gettimeofday(&start, NULL);
+    unsigned int count;
+    wchar_t str[] = L"abcdefg";
+
+    
+    for( count=0; count <= 1000000; count++) {
+            wcslen(str);
+  }
+
+    
+    gettimeofday(&stop, NULL);
+    double secs = (double)(stop.tv_usec - start.tv_usec) / 1000000 + (double)(stop.tv_sec - start.tv_sec);
+    printf("wcslen took %6.6f\n", secs);
+
+}
